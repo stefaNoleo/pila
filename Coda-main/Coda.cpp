@@ -23,6 +23,16 @@ int inserisci(coda &c, int e)
 	return temp;
 }
 
+void scorri( coda &c){
+	int i;
+	int pos=c.testa;
+	for(i=c.testa;i<c.fine;i++){
+		c.queue[i-pos]=c.queue[i];
+		c.fine=c.fine-pos;
+		c.testa=0;
+	}
+}
+
 int estrai(coda &c)
 /*
  * Estrae e restituisce il primo elemento in coda
@@ -31,8 +41,9 @@ int estrai(coda &c)
 {
 	int temp = 0;
 	if(c.testa!=N){
-    temp=c.queue[c.testa];
-    c.testa++;
+    		temp=c.queue[c.testa];
+   		 c.testa++;
+		scorri(c);
   }
 	
 	return temp;
