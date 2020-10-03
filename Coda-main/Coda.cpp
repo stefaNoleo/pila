@@ -4,6 +4,7 @@
 using namespace std;
 
 int inserisci(coda &c, int e)
+
 /*
  * Inserisce in coda l'elemento e
  * Implementare anche il controllo di coda piena.
@@ -12,8 +13,12 @@ int inserisci(coda &c, int e)
  * elemento
  */
 {
-	int temp = -1
-	//Di seguito il codice
+	int temp = -1;
+	if(c.fine<N){
+    c.queue[c.fine]=e;
+    c.fine++;
+    temp=0;
+  }
 	
 	return temp;
 }
@@ -25,7 +30,10 @@ int estrai(coda &c)
  */
 {
 	int temp = 0;
-	//Di seguito il codice
+	if(c.testa!=N){
+    temp=c.queue[c.testa];
+    c.testa++;
+  }
 	
 	return temp;
 }
@@ -37,5 +45,13 @@ void stampa (coda c)
  * siano elementi in coda.
  */
 {
-	
-}
+	if(c.fine==0){
+    cout<<endl<<"tutte le posizioni della coda sono vuote"<<endl;
+  }
+  else{
+    for(int i=0;i<N;i++){
+      cout<<"in posizione "<<i<<" è presente"<<c.queue[i]<<endl;
+    }
+  }
+  }
+
